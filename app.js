@@ -93,4 +93,19 @@ document.addEventListener("DOMContentLoaded", () => {
     const numeric = header.classList.contains("numeric");
     let order = -1;
 
-    header.da
+    header.dataset.numeric = numeric;
+    header.dataset.order = order;
+
+    header.children[0].addEventListener("click", () => {
+      sortColumn(header, i);
+    });
+
+    const filter = document.createElement("input");
+    filter.type = "text";
+    filter.addEventListener("keyup", () => {
+      filterColumn(filter, i);
+    });
+
+    header.appendChild(filter);
+  });
+});
